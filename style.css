@@ -1,0 +1,56 @@
+.jumbotron{
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    /* width: 100px; Need a specific value to work */
+    /* background-image: url('img/home-banner-1.jpg'); */
+    /* background-size: cover; */
+    /* margin-top: -200px; */
+    /* height: 900px; */
+    pointer-events: none;
+    background: none;
+}
+
+.jumbotron .display-4{
+    margin-top: 10px;
+    font-size: 50px;
+    color: black;
+}
+
+
+.jumbotron .lead{
+    color: black;
+}
+.container{
+    max-width:100%;
+}
+
+#controls {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 3px;
+}
+.ctrl {
+    padding: 8px 5px;
+    width: 30px;
+    text-align: center;
+    background: rgba(200, 200, 200, 0.8);
+    display: inline-block;
+    cursor: pointer;
+}
+.ctrl:hover {
+    background: rgba(200, 200, 200, 1);
+}
+html {
+    height: 100%;
+}
+
+#panorama {
+    width: 100%;
+    height: 500px;
+}

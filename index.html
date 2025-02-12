@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPM AFM VIRTUAL TOUR</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"  crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <script src="index.js"></script>
+    <audio autoplay id="audio">
+      <source src="music/sabilulungan.mp3" type="audio/mpeg">
+    </audio>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+  </head>
+    <title>Virtual Tour Yayasan Al Faqih Mandiri</title>
+    <body>
+      <div id="infoModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Information</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Yayasan Al Faqih Mandiri (AFM) adalah asrama bagi para mahasiswa/i untuk menimba ilmu agama.</p> 
+              <p>Asrama ini memiliki visi, yaitu mencetak mahasiswa yang profesional religius.</p>         
+              <p>Tidak semua mahasiswa ingin menjadi bagian dari asrama tersebut, 
+                hanya mahasiswa yang memiliki niat kuat untuk memperkuat ilmu agama sambil kuliah.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="mapModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg"  role="document">
+          <div class="modal-content" style="height:500px;">
+            <div class="modal-header">
+              <h5 class="modal-title">Maps</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2460800380745!2d106.8305253159053!3d-6.362189364012387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ed00cea6f0a5%3A0x1b817da416ece8e7!2sAl%20Faqih%20Islamic%20Boarding%20School%20Depok%20(LDII)!5e0!3m2!1sen!2sid!4v1658849323011!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+          <div class="container">
+          <a class="navbar-brand" href="#"><strong>PPM Al Faqih Mandiri</a></strong>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+              <a class="nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="javascript: scroll('About');">About</a>
+              <a class="nav-link" href="Javascript: scroll('Team');">Team</a>
+              <a class="nav-link" href="Javascript: scroll('Contact');">Contact Us</a>
+          </div>
+          </div>
+          </div>
+      </nav>
+
+    
+      <div id="panorama">
+        <div id="controls">
+          <div class="ctrl" id="sound">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-music-note-beamed" viewBox="0 0 16 16">
+            <path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13c0-1.104 1.12-2 2.5-2s2.5.896 2.5 2zm9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2z"/>
+            <path fill-rule="evenodd" d="M14 11V2h1v9h-1zM6 3v10H5V3h1z"/>
+            <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4V2.905z"/>
+          </svg>
+        </div>
+          <div class="ctrl" id="information">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </div>
+          <div class="ctrl" id="mapbutton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+              <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+              <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+
+      
+      <!-- <div class="jumbotron">
+        <h1 class="display-4 text-center">PONDOK PESANTREN MAHASISWA<P>AL-FAQIH MANDIRI</P></h1>
+        <p class="lead text-center">Mencetak generasi muda mahasiswa yang profesional religius</p>                
+      </div> -->
+
+
+    <h3 class="mt-5 text-center" id="About">ABOUT</h3>
+    <hr>
+    <div class="row text-justify">
+      <div class="col-md-4 p-4">
+      <p>
+     <h4>Apa itu PPM AFM ?</h4>
+      Pondok pesantren mahasiswa Al-Faqih Mandiri Depok yaitu pondok pesantren yang 
+      diperuntukkan khusus untuk mahasiswa seluruh Indonesia yang sedang menempuh kuliah di 
+      depok dan sekitarnya.</p>
+    </div>    
+
+    <div class="col-md-4 p-4">
+      <p>
+     <h4>Dimana alamatnya ?</h4>     
+     Lokasi Pondok pesantren mahasiwa Al Faqih Mandiri sangat strategis, kami berada tepat di 
+     jantung kota Depok, yaitu di Jalan Sawo No 33B RT.03 RW.07 Kel. Pondok Cina Kec. Beji 
+     Kota Depok. PPM AFM juga sangat dekat dengan Universitas Indonesia serta kampus lainnya, 
+     dan lokasi kami sangat mudah dijangkau dengan transportasi umum karena dekat dengan 
+     stasiun dan jalan raya.</p>
+    </div>
+    
+    <div class="col-md-4 p-4">
+      <p>
+        <h4>Kapan PPM AFM Diresmikan ?</h4>
+        PPM AFM di resmikan pada tanggal 16 Agustus 2013
+      </p>
+    </div>
+    
+    </div>
+
+    <h3 class="mt-5 text-center" id="Team">TEAM</h3>
+    <hr>
+    
+    <div class="container">
+      <div class="row text-justify">
+        <div class="col-md-4 p-4">
+          <h4>Kreatif</h4>
+          <img src="img/kreatif.JPG" alt="kreatif" style="width: 400px; height:300px;">
+          <h5>Visi</h5>
+          <P>Terwujudnya diisi keluara kreatif yang berkontribusi aktif dalam mewujudkan linkungan PPM AFM yang :</P>
+          <p>1. Memiliki citra yang baik dan berintegritas</p>  
+          <p>2. Suportif terhadap perkembangan setiap warga PPM AFM</p>
+          <h5>Misi</h5>
+          <p>1. Menciptakan sistem kerja divisi yang kolaboratif dan menjadikannya wadah pengembanan diri bagi santri PPM AFM (termasuk stakeholder divisi didalamnya).</p>
+          <p>2. Turut berperan aktif didalam mempromosikan PPM AFM baik secara internal maupun eksternal</p>
+          <p>3. Berkontribusi dalam mewujudkan linkunagn PPM AFM yang nyaman, rukun, kompak, dan juga bersahaja</p>
+        </div>
+
+        <div class="col-md-4 p-4">
+          <h4>Kurikulum</h4>
+          <img src="img/kurkul.JPG" alt="kurikulum" style="width: 400px; height:300px;">    
+          <h5>Visi</h5>
+          <p>Membantu para santri mencapai targetnya selama 3 tahun di PPM AFM</p>
+          <h5>Misi</h5>
+          <p>1. Mendistribusikan materi selama 3 tahun</p>
+          <p>2. Mendukung dan memfasilitasi kegiatan belajar mengajar di PPM AFM</p>
+        </div>
+
+        <div class="col-md-4 p-4">
+          <h4>Ubank</h4>
+          <img src="img/ubank.JPG" alt="ubank" style="width: 400px; height:300px;">
+          <h5>Visi dan Misi</h5>                    
+          <P>1. Memberdayakan dan menggerakan potensi mahasiswa di bidang kewirausahaan</P>
+          <p>2. Mengembangkan kegiatan usaha dan kegiatan kewirausahaan dalam rangka pembenahan ekonomi</p>
+        </div>
+        
+        <div class="col-md-4 p-4">
+          <h4>Kesiswaan</h4>
+          <img src="img/kesiswaan.JPG" alt="kesiswaan" style="width: 400px; height:300px;">
+          <h5>Visi</h5>
+          <p>Menjadi representasi santri yang ideal serta menjadi agen aktif dalam mensukseskan pembinaan professional religius di PPM AFM</p>
+          <h5>Misi</h5>
+          <p>1. Menjadi pemimpin yang bertanggung jawab bagi para santri PPM AFM</p>
+          <p>2. Menjadi pengawas kinerja KOAS dan Divisi PPM AFM</p>
+        </div>
+        
+        <div class="col-md-4 p-4">
+          <h4>Keputrian</h4>
+          <img src="img/keputrian1.JPG" alt="keputrian" style="width: 400px; height:300px;">
+          <h5>Visi dan Misi</h5>
+          <p>Melaksanakan kegiatan yang bertujuan untuk mengembangkan keterampilan serta menambah wawasan santriwati PPM AFM</p>
+          <p>Menjadi rekan santriwati dan berusaha membantu santriwati dalam menghadapi kesulitan</p>
+        </div>
+      
+        <div class="col-md-4 p-4">
+          <h4>Sarana dan Prasarana</h4>
+          <img src="img/sarpras.JPG" alt="sarpras" style="width: 400px; height:300px;">
+        </div>
+
+        <div class="col-md-4 p-4">
+          <h4>Kesehatan</h4>
+          <img src="img/divkes.JPG" alt="divkes" style="width: 400px; height:300px;">
+          <h5>Visi Misi</h5>
+        </div>
+
+        <div class="col-md-4 p-4">
+          <h4>Rumah Tangga</h4>
+          <img src="img/timtam.JPG" alt="timtam" style="width: 400px; height:300px;">
+          <h5>Visi dan Misi</h5>
+          <p>Menyediakan fasilitas untuk tamu dengan baik</p>
+          <p>Melayani tamu yang datang ke PPM AFM sebagaimana mestinya</p>
+          <p></p>
+        </div>
+
+        <div class="col-md-4 p-4">
+          <h4>PSDM</h4>
+          <img src="img/psdm.JPG" alt="psdm" style="width: 400px; height:300px;">
+          <h5>Visi</h5>
+          <p>PSDM (Pengembangan Sumber Daya Muslim) sebagai badan penunjang yang profesional, berkelanjutan dan juga progresif untuk generasi penerus yang madani</p>
+          <h5>Misi</h5>
+          <p>1. Karakter PSDM yang profesional berarti progres yang dilakukan oleh PSDM harus terlaksanakan dengan rapih, terorganisasi, dan terencana dengan baik</p>
+          <p>2. Berkesinambungan dan terus menerus berusaha mewujudkan hasil akhir yang dituju</p>
+          <p>3. Memiliki target yang akan dilakukan secara bertahap dengan adanya tujuan atau arah yang jelas berdasarkan evaluasi yang dilakukan secara berkala</p>
+        </div>
+
+        <div class="col-md-4 p-4">
+          <h4>Keuangan</h4>
+          <img src="img/keuangan.JPG" alt="keuangan" style="width: 400px; height:300px;">
+          <h5>Visi dan Misi</h5>
+          <p>1. Menghimpun dana BOP dari tiap santri</p>
+          <p>2. Bertanggung jawab dalam mengelola, mencatat, dan membuat laporan pemasukan dan pengeluaran dana BOP</p>
+          <p>3. Bertanggung jawab dalam pembayaran seluruh operasional PPM</p>
+          <p>4. Bertanggung jawab dalam menghimpun, mencatat dan melaporkan dana isrun dari tiap santri</p>
+        </div>
+
+        <div class="col-md-4 p-4">
+          <h4>Sekretariat</h4>
+          <img src="img/sekre.JPG" alt="sekre" style="width: 400px; height:300px;">
+         <h5>Visi dan Misi</h5>
+          <p>Mendukung program kerja dan kegiatan, melancarkan administrasi dan juga 
+            bidang kerja kesekretariatan sangat banyak, 
+            baik yang bersifat rutin dikerjakan setiap hari maupun 
+            pekerjaan yang bersifat insidental</p>
+        </div>
+
+        <div class="col-md-4 p-4">
+          <h4>Humas</h4>
+          <img src="img/humas.JPG" alt="humas" style="width: 400px; height:300px;">
+          <h5>Visi dan Misi</h5>
+          <p>Mengatur alur informasi yang 
+            berkaitan dengan PPM AFM baik 
+            yang bersifat kedalam ataupun 
+            keluar</p>
+        </div>
+
+        <div class="col-md-4 p-4">
+          <h4>Fundrishing</h4>
+          <img src="img/fr.JPG" alt="fr" style="width: 400px; height:300px;">
+          <h5>Visi dan Misi</h5>
+          <p>Membantu kebutuhan keuangan dan infrastruktur PPM AFM dengan dana usaha</p>
+        </div>
+        
+        <div class="col-md-4 p-4">
+          <h4>Mechanical Engineering</h4>
+          <img src="img/me.JPG" alt="me" style="width: 400px; height:300px;">
+          <h5>Visi dan Misi</h5>
+        </div>
+
+        <div class="col-md-4 p-4">
+          <h4>Pamong</h4>
+          <img src="img/pamong.JPG" alt="pamong" style="width: 400px; height:300px;">
+          <h5>Visi Misi</h5>
+          <p></p>      
+        </div>
+
+      </div>
+    </div>
+
+    <h3 class="mt-5 text-center" id="Contact">Contact Us</h3>    
+    <hr>
+    
+    <div class="text-light bg-dark">
+      <div class="container text-center p-4">
+        <p>Mencetak generasi muda mahasiswa yang profesional religius</p>
+        <p></p>
+      </div>
+    </div>
+    
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    -->
+    <script>
+      function scroll(scrollId){
+        var getMeTo = document.getElementById(scrollId);
+       getMeTo.scrollIntoView({behavior: 'smooth'}, false);
+      }
+      </script>
+      
+  
+  </body>
+</html>
